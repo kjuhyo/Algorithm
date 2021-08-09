@@ -1,5 +1,5 @@
 
-public class _43165_Ÿ�ٳѹ� {
+public class _43165_타겟넘버 {
 	public int solution(int[] numbers, int target) {
         int answer = 0;
         answer = dfs(numbers, 0, target, 0);
