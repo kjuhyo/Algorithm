@@ -14,7 +14,7 @@ public class _42842_카펫 {
                 }else continue;
             }
         }
-        answer[0]=garo+2; //b가 더 길 수밖에 --> 0번째 칸에
+        answer[0]=garo+2; //garo가 더 길 수밖에 --> 0번째 칸에
         answer[1]=sero+2;
         return answer;
     }
