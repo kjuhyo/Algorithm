@@ -14,15 +14,12 @@ public class _42839_소수찾기 {
 		isSelected=new char[N];
 		c=new char[N];
 		list=new ArrayList<>();
-	    for(int i=0; i<numbers.length(); i++){
-	        c[i]=numbers.charAt(i);
-	    }
+	    c=numbers.toCharArray();
 	    
 		for(int i=0; i<N; i++) {
 			for(int j=1; j<=N; j++) {
 				perm(i, j);	
 			}
-			
 		}
 		
 		return list.size();
