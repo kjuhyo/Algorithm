@@ -9,23 +9,24 @@ public class _42888_오픈채팅방 {
 		for(String w:ans){
             System.out.println(w);
         }
-
 	}
 	
 	public static String[] solution(String[] record) {
 		
+		//아이디와 닉네임을 매칭
         HashMap<String, String> map=new HashMap<>();
         for(int i=0; i<record.length; i++){
             String s=record[i];
             String[] word=s.split(" ");
             
-            if(!word[0].equals("Leave")){ //나간사람 remove하면 안됨. 나갔다고 찍어줘야하는데 나가고 다시 안들어오면 닉네임 값을 알수가 없음.
+            if(!word[0].equals("Leave")){ 
                 map.put(word[1], word[2]);
-            }else{
+            }else{ //나간사람 remove하면 안됨. 나갔다고 찍어줘야하는데 나가고 다시 안들어오면 닉네임을 알수가 없음.
                 continue;
             }
         }
         
+        //원하는 결과대로 출력
         ArrayList<String> list=new ArrayList<>();
         for(int i=0; i<record.length; i++){
             String str=record[i];
