@@ -1,7 +1,7 @@
 
 public class _42860_조이스틱 {
 	public static void main(String[] args) {
-		System.out.println(solution("JAZ"));
+		System.out.println(solution("AABAAAAAAA"));
 	}
 	public static int solution(String name) {
 		int answer=0;
@@ -20,12 +20,17 @@ public class _42860_조이스틱 {
 			while(next<name.length() && name.charAt(next)=='A') { //다음인덱스가 문자열 범위 안넘고 && 다음 문자열이 A라면 
 				next++;											// 그냥 이동해야하므로 다음인덱스의 다음인덱스
 			}
-			
-			move=Math.min(move, i+name.length()-next+i); 
+			 
+			int temp = next == name.length() ? i : i+name.length() -next +i;
+			//next == name.length() : next가 끝까지 갔다면
+			//i : 그대로 같은 방향으로 이동한거임
+			//끝까지 안갔다면
+			//i+name.length() -next +i : 예로 AABBAAAAAB의 경우, 시작점에서 오른쪽으로 이동해 3,4번째 B변경 후 뒤로 돌아간뒤 맨마지막 B변경이 최소거리이므로
+			//							i만큼 다시 되돌아가게됨. 이런경우를 위해 i+i. 거기에 전체길이에서 A가 아닌문자의 총길이 더해줌
+            move = Math.min(move, temp);
 		}
 		answer+=move; //1)+2) 더한게 값
 		return answer;
-		
 	}
 }
 
