@@ -32,10 +32,10 @@ class Solution {
         return answer;
     }
 
-    // 순열 뽑기
+    // 순열 뽑기(우선 순위)
     private void permutation(char[] oper, int cnt) {
         if (cnt == 3) {
-            calc(oper);
+            oper(oper);
         }
 
         for (int i = 0; i < 3; i++) {
@@ -49,13 +49,13 @@ class Solution {
     }
 
     // 수식값 계산
-    private void calc(char[] oper) {
+    private void oper(char[] oper) {
         ArrayList<Long> nums = new ArrayList<>(numList);
         ArrayList<Character> opers = new ArrayList<>(operList);
         for (char c : oper) {
             for (int i = 0; i < opers.size(); i++) {
                 if (c == opers.get(i)) {
-                    long num = oper(nums.remove(i), nums.remove(i), c);
+                    long num = calc(nums.remove(i), nums.remove(i), c);
                     nums.add(i, num);
                     opers.remove(i);
                     i--;
@@ -67,7 +67,7 @@ class Solution {
     }
 
     // 연산
-    private long oper(Long one, Long two, char c) {
+    private long calc(Long one, Long two, char c) {
         switch (c) {
             case '+':
                 return one + two;
