@@ -2,11 +2,6 @@ import java.util.*;
 import java.util.Map.Entry;
 
 public class _72411_메뉴리뉴얼 {
-	static Character isSelected[];
-	static ArrayList<Character> list;
-	static String[] order;
-	static HashMap<String, Integer> map;
-	static ArrayList<String> result;
 	
 	public static void main(String[] args) {
 		String[] orders = {"ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"};
@@ -17,25 +12,32 @@ public class _72411_메뉴리뉴얼 {
 		}
 	}
 
-	public static String[] solution(String[] orders, int[] course) {
-		list = new ArrayList<>();
-		for (int i = 0; i < orders.length; i++) {
+	static Character isSelected[];
+	static ArrayList<Character> menu; //메뉴(알파벳) 리스트
+	static String[] order; //orders의 복사본
+	static HashMap<String, Integer> map; 
+	static ArrayList<String> result;
+    
+     
+    public static String[] solution(String[] orders, int[] course) {
+        menu = new ArrayList<>();
+		for (int i = 0; i < orders.length; i++) { 
 			String s = orders[i];
 			for (int j = 0; j < s.length(); j++) {
-				if (list.indexOf(s.charAt(j)) < 0) {
-					list.add(s.charAt(j));
+				if (menu.indexOf(s.charAt(j)) < 0) { //이 테케의 메뉴, 중복되게 담으면 안되므로.
+					menu.add(s.charAt(j));
 				}
 			}
 		}
-		Collections.sort(list);
+		Collections.sort(menu);
 		
-		isSelected = new Character[list.size()];
+		isSelected = new Character[menu.size()];
 		order = orders;
 		map = new HashMap<>();
 		result = new ArrayList<>();
 		
 		for (int i = 0; i < course.length; i++) {
-			comb(0, 0, course[i]);
+			comb(0, 0, course[i]); //각 코스별 조합 구하러 가즈아.
 			
 			map.values().removeAll(Collections.singleton(1));
 			if(!map.isEmpty()) {
@@ -94,13 +96,13 @@ public class _72411_메뉴리뉴얼 {
 			}
 			return;
 		}
-		if (idx == list.size()) {
+		if (idx == menu.size()) {
 			return;
 		}
 
-		isSelected[s_idx] = list.get(idx);
+		isSelected[s_idx] = menu.get(idx);
 		comb(idx + 1, s_idx + 1, n);
 		comb(idx + 1, s_idx, n);
-	}
+    }
 
 }
