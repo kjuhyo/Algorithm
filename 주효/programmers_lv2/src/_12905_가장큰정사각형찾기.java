@@ -1,6 +1,7 @@
 
 public class _12905_가장큰정사각형찾기 {
-
+	
+	//효율성 bad
 	public static void main(String[] args) {
 		int[][] arr = { { 0, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 0, 0, 1, 0 } };
 		System.out.println(solution(arr));
